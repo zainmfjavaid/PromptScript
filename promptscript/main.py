@@ -1,8 +1,8 @@
-from lexer import lex
+from lexer import lex, parse
 
 while True:
     try:
-        print(lex(input('Command: ')))
+        print(parse(input('Command: ')))
     except Exception as e:
         raise
     except KeyboardInterrupt:

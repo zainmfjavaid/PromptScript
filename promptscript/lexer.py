@@ -1,9 +1,11 @@
 from typing import List
+from utils.debug_level import DebugLevel
 
 ### CURRENT SUPPORTED COMMANDS:
 # SHOW "{message}"
 
-OPERATION_WORDS = ['show']
+DEBUG_LEVEL = DebugLevel.DEBUG
+AST_CONVERSION = {'show':'print_operator', '"':'quote'}
 PROTECTED_BLOCK_CHARACTERS = ['"', '"', '"']
 NEW_PART_CHARACTERS = [' ']
 
@@ -36,3 +38,30 @@ def lex(command: str) -> List[str]:
         parts.append(current_block)
             
     return parts
+
+def parse(command: str):
+    parts = lex(command)
+    if DEBUG_LEVEL <= DebugLevel.DEBUG:
+        print(f'LEXED PARTS :: {parts}')
+    
+    ast_operations = []
+    is_open = False
+    for part in parts:
+        try:
+            if part.lower() in PROTECTED_BLOCK_CHARACTERS:
+                is_open = not is_open
+                ast_operation = (AST_CONVERSION[part.lower()], part.lower())
+            elif is_open:
+                ast_operation = ('msg', part)
+            else:
+                ast_operation = (AST_CONVERSION[part.lower()], part.lower())
+                
+            ast_operations.append(ast_operation)
+        except IndexError:
+            if DEBUG_LEVEL <= DebugLevel.ERROR:
+                raise SyntaxError(f"SYNTAX ERROR: Unexpected token '{part}'")
+            
+    if DEBUG_LEVEL <= DebugLevel.DEBUG:
+        print(f'PARSED PARTS :: {ast_operations}')
+        
+    return ast_operations
