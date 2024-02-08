@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from utils.numbers import is_number
 from utils.debug_level import DebugLevel
 
 ### CURRENT SUPPORTED COMMANDS:
@@ -8,6 +9,7 @@ DEBUG_LEVEL = DebugLevel.DEBUG
 AST_CONVERSION = {'show':'print_operator', '"':'quote'}
 INTERPRETER_CONVERSION = {'print_operator':'print('}
 PROTECTED_BLOCK_CHARACTERS = ['"', '"', '"']
+OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ']
 
 
@@ -49,11 +51,14 @@ def parse(command: str) -> List[Tuple]:
     is_open = False
     for part in parts:
         try:
+            print(part)
             if part.lower() in PROTECTED_BLOCK_CHARACTERS:
                 is_open = not is_open
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
             elif is_open:
                 ast_operation = ('msg', part)
+            elif is_number(part) and not is_open:
+                ast_operation = ('num', part)
             else:
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
                 
@@ -74,10 +79,11 @@ def interpret(command: str):
     is_open_paren = False
     for op_name, part in ast_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
-        if '(' in conversion:
+
+        if '(' in str(conversion):
             is_open_paren = True
+        interpreted_command += str(conversion)
         
-        interpreted_command += conversion
     if is_open_paren:
         interpreted_command += ')'
         
