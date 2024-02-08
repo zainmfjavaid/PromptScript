@@ -1,9 +1,17 @@
-from lexer import lex, parse
+import subprocess
+from interpreter import interpret
 
 while True:
     try:
-        print(parse(input('Command: ')))
+        interpreted_command = interpret(input('Command: '))
+        subprocess_command = ['python', '-c', interpreted_command]
+        output = subprocess.run(subprocess_command, capture_output=True, text=True)
+        if output.stderr:
+            print('RUNTIME ERROR:', output.stderr)
+        else:
+            print(f'Output :: {output.stdout}')
+        
     except Exception as e:
-        raise
+        print(e)
     except KeyboardInterrupt:
         break

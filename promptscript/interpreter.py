@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 from utils.debug_level import DebugLevel
 
 ### CURRENT SUPPORTED COMMANDS:
@@ -6,6 +6,7 @@ from utils.debug_level import DebugLevel
 
 DEBUG_LEVEL = DebugLevel.DEBUG
 AST_CONVERSION = {'show':'print_operator', '"':'quote'}
+INTERPRETER_CONVERSION = {'print_operator':'print('}
 PROTECTED_BLOCK_CHARACTERS = ['"', '"', '"']
 NEW_PART_CHARACTERS = [' ']
 
@@ -39,7 +40,7 @@ def lex(command: str) -> List[str]:
             
     return parts
 
-def parse(command: str):
+def parse(command: str) -> List[Tuple]:
     parts = lex(command)
     if DEBUG_LEVEL <= DebugLevel.DEBUG:
         print(f'LEXED PARTS :: {parts}')
@@ -57,7 +58,7 @@ def parse(command: str):
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
                 
             ast_operations.append(ast_operation)
-        except IndexError:
+        except KeyError:
             if DEBUG_LEVEL <= DebugLevel.ERROR:
                 raise SyntaxError(f"SYNTAX ERROR: Unexpected token '{part}'")
             
@@ -65,3 +66,22 @@ def parse(command: str):
         print(f'PARSED PARTS :: {ast_operations}')
         
     return ast_operations
+
+def interpret(command: str):
+    ast_operations = parse(command)
+    
+    interpreted_command = ''
+    is_open_paren = False
+    for op_name, part in ast_operations:
+        conversion = INTERPRETER_CONVERSION.get(op_name, part)
+        if '(' in conversion:
+            is_open_paren = True
+        
+        interpreted_command += conversion
+    if is_open_paren:
+        interpreted_command += ')'
+        
+    if DEBUG_LEVEL <= DebugLevel.DEBUG:
+        print(f'INTERPRETED COMMAND :: {interpreted_command}')
+        
+    return interpreted_command
