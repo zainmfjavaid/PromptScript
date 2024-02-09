@@ -1,6 +1,7 @@
 import sys
 from typing import List
 from interpreter import interpret
+from utils.is_valid_file import is_promptscript_file
 
 
 def read_file(file_path: str) -> List[str]:
@@ -9,6 +10,8 @@ def read_file(file_path: str) -> List[str]:
     
 def interpet_file():
     file_path = sys.argv[1]
+    if not is_promptscript_file(file_path):
+        raise Exception("Unsupported file type")
     commands = read_file(file_path)
     local_scope = {}
 

@@ -20,5 +20,5 @@ while True:
         print(f'Error: {e}')
         
     except KeyboardInterrupt:
-        print("Exiting...")
+        print("\n\nExiting...")
         break
