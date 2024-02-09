@@ -83,7 +83,7 @@ def parse(command: str, DEBUG_LEVEL: DebugLevel) -> List[Tuple]:
         
     return ast_operations
 
-def interpret(command: str, DEBUG_LEVEL: DebugLevel):
+def interpret(command: str, DEBUG_LEVEL: DebugLevel) -> str:
     ast_operations = parse(command, DEBUG_LEVEL)
     
     interpreted_command = ''

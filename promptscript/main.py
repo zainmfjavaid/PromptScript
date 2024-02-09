@@ -17,8 +17,8 @@ while True:
             print('Local scope:', local_scope)
 
     except Exception as e:
-        raise
         print(f'Error: {e}')
+        
     except KeyboardInterrupt:
         print("Exiting...")
         break
