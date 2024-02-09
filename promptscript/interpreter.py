@@ -93,7 +93,7 @@ def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     for op_name, part in ast_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
 
-        if '(' in str(conversion):
+        if '(' in conversion and ')' not in conversion:
             is_open_paren = True
         interpreted_command += str(conversion)
         
