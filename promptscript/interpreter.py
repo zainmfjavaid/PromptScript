@@ -3,7 +3,9 @@ from utils.numbers import is_number
 from utils.debug_level import DebugLevel
 
 ### CURRENT SUPPORTED COMMANDS:
-# SHOW "{message}"
+# Variable assignment (x = 5, x = "hello", etc)
+# Printing (SHOW "msg", SHOW variable)
+# Math operations (+, -, *, /)
 
 AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'equals':'='}
@@ -83,7 +85,7 @@ def parse(command: str, DEBUG_LEVEL: DebugLevel) -> List[Tuple]:
         
     return ast_operations
 
-def interpret(command: str, DEBUG_LEVEL: DebugLevel) -> str:
+def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     ast_operations = parse(command, DEBUG_LEVEL)
     
     interpreted_command = ''
