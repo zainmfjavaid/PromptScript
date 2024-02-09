@@ -1,17 +1,24 @@
-import subprocess
 from interpreter import interpret
+from utils.debug_level import DebugLevel
+
+local_scope = {}
+DEBUG_LEVEL = DebugLevel.INFO
 
 while True:
     try:
-        interpreted_command = interpret(input('Command: '))
-        subprocess_command = ['python', '-c', interpreted_command]
-        output = subprocess.run(subprocess_command, capture_output=True, text=True)
-        if output.stderr:
-            print('RUNTIME ERROR:', output.stderr)
-        else:
-            print(f'Output :: {output.stdout}')
+        user_input = input('Command: ')
+        if user_input.lower() == 'exit':
+            break
         
+        interpreted_command = interpret(user_input, DEBUG_LEVEL)
+        exec(interpreted_command, globals(), local_scope)
+
+        if DEBUG_LEVEL <= DebugLevel.DEBUG:
+            print('Local scope:', local_scope)
+
     except Exception as e:
-        print(e)
+        raise
+        print(f'Error: {e}')
     except KeyboardInterrupt:
+        print("Exiting...")
         break

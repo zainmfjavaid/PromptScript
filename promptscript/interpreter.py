@@ -5,7 +5,6 @@ from utils.debug_level import DebugLevel
 ### CURRENT SUPPORTED COMMANDS:
 # SHOW "{message}"
 
-DEBUG_LEVEL = DebugLevel.DEBUG
 AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'equals':'='}
 STANDALONE_CHARACTERS = ['=']
@@ -14,7 +13,7 @@ OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ']
 
 
-def lex(command: str) -> List[str]:
+def lex(command: str, DEBUG_LEVEL: DebugLevel) -> List[str]:
     parts = []
     current_block = ''
     is_protected_block = False
@@ -48,13 +47,15 @@ def lex(command: str) -> List[str]:
                 current_block += char
     if len(current_block) != 0:
         parts.append(current_block)
-            
-    return [part for part in parts if part != '']
-
-def parse(command: str) -> List[Tuple]:
-    parts = lex(command)
+    parts = [part for part in parts if part != '']
+    
     if DEBUG_LEVEL <= DebugLevel.DEBUG:
         print(f'LEXED PARTS :: {parts}')
+    
+    return parts
+
+def parse(command: str, DEBUG_LEVEL: DebugLevel) -> List[Tuple]:
+    parts = lex(command, DEBUG_LEVEL)
     
     ast_operations = []
     is_open = False
@@ -68,10 +69,7 @@ def parse(command: str) -> List[Tuple]:
             elif is_number(part) and not is_open:
                 ast_operation = ('num', part)
             elif not is_open and part.lower() not in AST_CONVERSION:
-                if i != len(parts) - 1 and parts[i + 1][0] == '=':                    
-                    ast_operation = ('var', part)
-                else:
-                    raise KeyError
+                ast_operation = ('var', part)
             else:
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
                 
@@ -85,8 +83,8 @@ def parse(command: str) -> List[Tuple]:
         
     return ast_operations
 
-def interpret(command: str):
-    ast_operations = parse(command)
+def interpret(command: str, DEBUG_LEVEL: DebugLevel):
+    ast_operations = parse(command, DEBUG_LEVEL)
     
     interpreted_command = ''
     is_open_paren = False
