@@ -8,6 +8,7 @@ from utils.debug_level import DebugLevel
 DEBUG_LEVEL = DebugLevel.DEBUG
 AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'equals':'='}
+STANDALONE_CHARACTERS = ['=']
 PROTECTED_BLOCK_CHARACTERS = ['"', '"', '"']
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ']
@@ -27,6 +28,14 @@ def lex(command: str) -> List[str]:
                 parts.append(current_block)
                 parts.append(char)
                 current_block = ''
+                
+        elif char in STANDALONE_CHARACTERS:
+            if not is_protected_block:
+                parts.append(current_block)
+                parts.append(char)
+                current_block = ''
+            else:
+                current_block += char
         
         elif char not in NEW_PART_CHARACTERS:
             current_block += char
@@ -40,7 +49,7 @@ def lex(command: str) -> List[str]:
     if len(current_block) != 0:
         parts.append(current_block)
             
-    return parts
+    return [part for part in parts if part != '']
 
 def parse(command: str) -> List[Tuple]:
     parts = lex(command)
@@ -49,17 +58,20 @@ def parse(command: str) -> List[Tuple]:
     
     ast_operations = []
     is_open = False
-    for part in parts:
+    for i, part in enumerate(parts):
         try:
             if part.lower() in PROTECTED_BLOCK_CHARACTERS:
                 is_open = not is_open
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
             elif is_open:
                 ast_operation = ('msg', part)
-            elif not is_open and part not in AST_CONVERSION:
-                ast_operation = ('var', part)
             elif is_number(part) and not is_open:
                 ast_operation = ('num', part)
+            elif not is_open and part.lower() not in AST_CONVERSION:
+                if i != len(parts) - 1 and parts[i + 1][0] == '=':                    
+                    ast_operation = ('var', part)
+                else:
+                    raise KeyError
             else:
                 ast_operation = (AST_CONVERSION[part.lower()], part.lower())
                 
