@@ -1,10 +1,10 @@
 import os
 import sys
 from typing import List, Any
+from utils.save import save_to_file
 from interpreter import interpret
 from utils.debug_level import DebugLevel
 from utils.is_valid_file import is_promptscript_file
-from environment_management import get_environment_file_path
 
 
 DEBUG_LEVEL = DebugLevel.INFO
@@ -15,6 +15,9 @@ def read_file(file_path: str) -> List[str]:
         return
     with open(file_path, 'r') as f:
         return [line.strip('\n') for line in f.readlines() if line.strip().strip('\t').strip('\n') != '']
+    
+def get_environment_file_path(file_path: str) -> str:
+    return f'{os.path.splitext(file_path)[0]}.env.prompt'
     
 def populate_environment(environment_commands: List[str]) -> None:
     for command in environment_commands:
@@ -41,7 +44,7 @@ def interpet_file():
             exec(interpreted_command, globals(), environment_scope)
 
     for command in commands:
-        interpreted_command = interpret(command, DEBUG_LEVEL, )
+        interpreted_command = interpret(command, DEBUG_LEVEL)
         exec(interpreted_command, globals(), local_scope)
 
 if __name__ == '__main__':
