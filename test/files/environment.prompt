@@ -1,2 +1,4 @@
 SHOW "environment init"
 SHOW USE "x"
+environment_y = USE "y"
+SHOW environment_y

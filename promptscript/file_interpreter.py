@@ -7,7 +7,7 @@ from utils.is_valid_file import is_promptscript_file
 from environment_management import get_environment_file_path
 
 
-DEBUG_LEVEL = DebugLevel.DEBUG
+DEBUG_LEVEL = DebugLevel.INFO
 environment_scope = {}
 
 def read_file(file_path: str) -> List[str]:
