@@ -7,8 +7,9 @@ from utils.debug_level import DebugLevel
 # Printing (SHOW "msg", SHOW variable)
 # Math operations (+, -, *, /)
 
-AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals'}
-INTERPRETER_CONVERSION = {'print_operator':'print(', 'equals':'='}
+AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals', 'use':'load_operator'}
+INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
+                          'equals':'='}
 STANDALONE_CHARACTERS = ['=']
 PROTECTED_BLOCK_CHARACTERS = ['"', '"', '"']
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
@@ -89,15 +90,15 @@ def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     ast_operations = parse(command, DEBUG_LEVEL)
     
     interpreted_command = ''
-    is_open_paren = False
+    open_paren_count = 0
     for op_name, part in ast_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
 
         if '(' in conversion and ')' not in conversion:
-            is_open_paren = True
+            open_paren_count += 1
         interpreted_command += str(conversion)
         
-    if is_open_paren:
+    for _ in range(open_paren_count):
         interpreted_command += ')'
         
     if DEBUG_LEVEL <= DebugLevel.DEBUG:

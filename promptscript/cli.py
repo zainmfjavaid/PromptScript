@@ -2,7 +2,7 @@ from interpreter import interpret
 from utils.debug_level import DebugLevel
 
 local_scope = {}
-DEBUG_LEVEL = DebugLevel.INFO
+DEBUG_LEVEL = DebugLevel.DEBUG
 
 while True:
     try:
