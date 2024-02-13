@@ -1,4 +1,4 @@
-from openai import OpenAI    
+from openai import OpenAI
         
 
 def chat_openai(api_key: str, prompt: str, model: str) -> str:
@@ -13,6 +13,6 @@ def chat_openai(api_key: str, prompt: str, model: str) -> str:
     return completion.choices[0].message.content
 
 def route_chat(api_key: str, prompt: str, model: str) -> str:
-    if model.startswith('gpt'):
+    if model.lower().startswith('gpt'):
         return chat_openai(api_key, prompt, model)
     raise Exception('ERROR: Invalid chat model')
