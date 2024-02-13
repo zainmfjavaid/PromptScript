@@ -7,10 +7,12 @@ from utils.debug_level import DebugLevel
 # Printing (SHOW "msg", SHOW variable)
 # Math operations (+, -, *, /)
 
-AST_CONVERSION = {'show':'print_operator', '"':'quote', '=':'equals', 'use':'load_operator',
-                  'save':'save_to_file', '->':'location_operator'}
+AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'use':'load_operator',
+                  'save':'save_to_file', '->':'location_operator', 'with':'with_operator',
+                  'chat':'chat_operator'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
-                          'save_to_file':'save_to_file(', 'location_operator':',', 'equals':'='}
+                          'save_to_file':'save_to_file(', 'location_operator':',', 'equals':'=',
+                          'with_operator':'(', 'chat_operator':'route_chat'}
 STANDALONE_CHARACTERS = ['=']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
