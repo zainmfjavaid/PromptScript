@@ -2,6 +2,7 @@ from utils.save import save_to_file
 from interpreter import interpret
 from utils.debug_level import DebugLevel
 from ai.chat_router import route_chat
+from ai.draw_router import route_draw
 
 local_scope = {}
 DEBUG_LEVEL = DebugLevel.DEBUG

@@ -8,9 +8,10 @@ from utils.debug_level import DebugLevel
 # Math operations (+, -, *, /)
 
 AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'load':'load_operator',
-                  'save':'save_to_file', 'chat':'chat_operator'}
+                  'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
-                          'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat('}
+                          'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
+                          'draw_operator':'route_draw('}
 STANDALONE_CHARACTERS = ['=']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']

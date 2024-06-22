@@ -1,8 +1,8 @@
 import os
-import sys
 from typing import List, Any
 from utils.save import save_to_file
 from ai.chat_router import route_chat
+from ai.draw_router import route_draw
 from interpreter import interpret
 from utils.debug_level import DebugLevel
 from utils.is_valid_file import is_promptscript_file
