@@ -3,9 +3,10 @@ from interpreter import interpret
 from utils.debug_level import DebugLevel
 from ai.chat_router import route_chat
 from ai.draw_router import route_draw
+from ai.listen_router import route_listen
 
 local_scope = {}
-DEBUG_LEVEL = DebugLevel.DEBUG
+DEBUG_LEVEL = DebugLevel.INFO
 
 def run_cli():
     while True:
