@@ -30,8 +30,7 @@ def get_environment_variable(key: str) -> Any:
         return environment_scope[key]
     raise KeyError(f"'{key}'")
             
-def interpet_file():
-    file_path = sys.argv[1]
+def interpet_file(file_path: str):
     if not is_promptscript_file(file_path):
         raise Exception("Unsupported file type")
     commands = read_file(file_path)
