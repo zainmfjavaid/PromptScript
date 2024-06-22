@@ -1,4 +1,4 @@
 SHOW "environment init"
-SHOW USE "x"
-environment_y = USE "y"
+SHOW LOAD "x"
+environment_y = LOAD "y"
 SHOW environment_y
