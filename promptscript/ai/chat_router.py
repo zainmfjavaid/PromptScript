@@ -1,7 +1,7 @@
 from openai import OpenAI
         
 
-def chat_openai(api_key: str, prompt: str, model: str) -> str:
+def chat_openai(prompt: str, model: str, api_key: str) -> str:
     client = OpenAI(api_key=api_key)
     completion = client.chat.completions.create(
         model=model,
@@ -12,7 +12,7 @@ def chat_openai(api_key: str, prompt: str, model: str) -> str:
     )
     return completion.choices[0].message.content
 
-def route_chat(api_key: str, prompt: str, model: str) -> str:
+def route_chat(prompt: str, model: str, api_key: str) -> str:
     if model.lower().startswith('gpt'):
-        return chat_openai(api_key, prompt, model)
+        return chat_openai(prompt, model, api_key)
     raise Exception('ERROR: Invalid chat model')
