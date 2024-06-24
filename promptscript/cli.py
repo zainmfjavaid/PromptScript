@@ -8,7 +8,7 @@ from ai.draw_router import route_draw
 from ai.listen_router import route_listen
 
 local_scope = {}
-DEBUG_LEVEL = DebugLevel.INFO
+DEBUG_LEVEL = DebugLevel.DEBUG
 COMMANDS = ['exit', 'save', 'load', 'show', 'chat', 'draw', 'listen', 'if', 'elif', 'else', 'for', 'while']
 
 def setup_readline():
@@ -64,7 +64,10 @@ def run_cli():
             if DEBUG_LEVEL <= DebugLevel.DEBUG:
                 print('Local scope:', local_scope)
 
-        except (KeyboardInterrupt, EOFError):
+        except KeyboardInterrupt:
+            print('\nKeyboard Interrupt')
+        
+        except EOFError:
             print("\n\nExiting...")
             break
 
