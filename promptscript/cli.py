@@ -1,3 +1,5 @@
+import atexit
+import readline
 from utils.save import save_to_file
 from interpreter import interpret
 from utils.debug_level import DebugLevel
@@ -8,7 +10,19 @@ from ai.listen_router import route_listen
 local_scope = {}
 DEBUG_LEVEL = DebugLevel.INFO
 
+def setup_readline():
+    history_file = '.cli_history'
+    try:
+        readline.read_history_file(history_file)
+    except FileNotFoundError:
+        pass
+    readline.set_history_length(1000)
+
+    atexit.register(readline.write_history_file, history_file)
+
 def run_cli():
+    setup_readline()
+    
     in_buffer = False
     command_buffer = []
     while True:
