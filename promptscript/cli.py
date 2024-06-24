@@ -9,6 +9,7 @@ from ai.listen_router import route_listen
 
 local_scope = {}
 DEBUG_LEVEL = DebugLevel.INFO
+COMMANDS = ['exit', 'save', 'load', 'show', 'chat', 'draw', 'listen', 'if', 'elif', 'else', 'for', 'while']
 
 def setup_readline():
     history_file = '.cli_history'
@@ -19,6 +20,17 @@ def setup_readline():
     readline.set_history_length(1000)
 
     atexit.register(readline.write_history_file, history_file)
+
+    def completer(text: str, state: int):
+        options = [cmd for cmd in COMMANDS if cmd.startswith(text.lower())]
+        if state < len(options):
+            if text.isupper():
+                return options[state].upper()
+            else:
+                return options[state] 
+    
+    readline.parse_and_bind('tab: complete')
+    readline.set_completer(completer)
 
 def run_cli():
     setup_readline()
