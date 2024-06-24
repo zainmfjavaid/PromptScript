@@ -5,16 +5,17 @@ from utils.debug_level import DebugLevel
 AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'load':'load_operator',
                   'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator', 
                   'listen':'listen_operator', 'if': 'if_conditional', 'elif': 'elif_conditional', 
-                  'else': 'else_conditional', 'for': 'for_loop', 'in': 'in_operator', 'while': 'while_loop'}
+                  'else': 'else_conditional', 'for': 'for_loop', 'in': 'in_operator', 'while': 'while_loop',
+                  ']': 'chain_close'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
                           'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
                           'draw_operator':'route_draw(', 'listen_operator':'route_listen(', 
                           'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else',
-                          'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while '}
-STANDALONE_CHARACTERS = ['=', '\t', ':']
+                          'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while ', 'chain_close': ')'}
+STANDALONE_CHARACTERS = ['=', '\t', ':', ']']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
-NEW_PART_CHARACTERS = [' ']
+NEW_PART_CHARACTERS = [' ', '[']
 
 
 def lex(command: str, DEBUG_LEVEL: DebugLevel) -> List[str]:
