@@ -5,11 +5,12 @@ from utils.debug_level import DebugLevel
 AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'load':'load_operator',
                   'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator', 
                   'listen':'listen_operator', 'if': 'if_conditional', 'elif': 'elif_conditional', 
-                  'else': 'else_conditional'}
+                  'else': 'else_conditional', 'for': 'for_loop', 'in': 'in_operator', 'while': 'while_loop'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
                           'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
                           'draw_operator':'route_draw(', 'listen_operator':'route_listen(', 
-                          'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else'}
+                          'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else',
+                          'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while '}
 STANDALONE_CHARACTERS = ['=', '\t', ':']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
@@ -93,13 +94,13 @@ def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     open_paren_count = 0
     for op_name, part in ast_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
-
         if '(' in conversion and ')' not in conversion:
             open_paren_count += 1
         interpreted_command += str(conversion)
         
     for _ in range(open_paren_count):
-        interpreted_command += ')'
+        if interpreted_command.count('(') != interpreted_command.count(')'):
+            interpreted_command += ')'
         
     if DEBUG_LEVEL <= DebugLevel.DEBUG:
         print(f'INTERPRETED COMMAND :: {interpreted_command}')

@@ -1,0 +1,14 @@
+for i in range(5):
+    show i
+
+show "done with first for loop, starting second"
+
+for j in range(1, 10):
+    show j
+
+show "done with for loops, starting while loop"
+
+x = 5
+while x != 0:
+    show x
+    x -= 1
