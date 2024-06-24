@@ -9,7 +9,7 @@ AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
                           'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
                           'draw_operator':'route_draw(', 'listen_operator':'route_listen(', 
-                          'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else '}
+                          'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else'}
 STANDALONE_CHARACTERS = ['=', '\t', ':']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
