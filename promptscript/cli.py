@@ -6,7 +6,7 @@ from ai.draw_router import route_draw
 from ai.listen_router import route_listen
 
 local_scope = {}
-DEBUG_LEVEL = DebugLevel.INFO
+DEBUG_LEVEL = DebugLevel.DEBUG
 
 def run_cli():
     while True:

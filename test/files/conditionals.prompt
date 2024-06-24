@@ -1,0 +1,8 @@
+x = 5
+
+IF x > 5:
+    SHOW "x is greater than 5"
+ELIF x < 5:
+    SHOW "x is less than 5"
+ELSE:
+    SHOW "x is equal to 5"

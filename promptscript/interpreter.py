@@ -2,18 +2,15 @@ from typing import List, Tuple
 from utils.numbers import is_number
 from utils.debug_level import DebugLevel
 
-### CURRENT SUPPORTED COMMANDS:
-# Variable assignment (x = 5, x = "hello", etc)
-# Printing (SHOW "msg", SHOW variable)
-# Math operations (+, -, *, /)
-
 AST_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'load':'load_operator',
                   'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator', 
-                  'listen':'listen_operator'}
+                  'listen':'listen_operator', 'if': 'if_conditional', 'elif': 'elif_conditional', 
+                  'else': 'else_conditional'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
                           'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
-                          'draw_operator':'route_draw(', 'listen_operator':'route_listen('}
-STANDALONE_CHARACTERS = ['=']
+                          'draw_operator':'route_draw(', 'listen_operator':'route_listen(', 
+                          'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else '}
+STANDALONE_CHARACTERS = ['=', '\t', ':']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ']

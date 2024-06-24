@@ -9,14 +9,14 @@ from utils.debug_level import DebugLevel
 from utils.is_valid_file import is_promptscript_file
 
 
-DEBUG_LEVEL = DebugLevel.INFO
+DEBUG_LEVEL = DebugLevel.DEBUG
 environment_scope = {}
 
 def read_file(file_path: str) -> List[str]:
     if not os.path.exists(file_path):
         return
     with open(file_path, 'r') as f:
-        return [line.strip('\n') for line in f.readlines() if line.strip().strip('\t').strip('\n') != '']
+        return [line.strip('\n').replace('    ', '\t') for line in f.readlines() if line.strip().strip('\n') != '']
     
 def get_environment_file_path(file_path: str) -> str:
     return f'{os.path.splitext(file_path)[0]}.env.prompt'
@@ -44,9 +44,13 @@ def interpet_file(file_path: str):
             interpreted_command = interpret(command)
             exec(interpreted_command, globals(), environment_scope)
 
+    interpreted_commands = []
     for command in commands:
         interpreted_command = interpret(command, DEBUG_LEVEL)
-        exec(interpreted_command, globals(), local_scope)
+        interpreted_commands.append(interpreted_command)
+
+    combined_commands = '\n'.join(interpreted_commands)
+    exec(combined_commands, globals(), local_scope)
 
 if __name__ == '__main__':
     interpet_file()
