@@ -92,16 +92,12 @@ def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     ast_operations = parse(command, DEBUG_LEVEL)
     
     interpreted_command = ''
-    open_paren_count = 0
     for op_name, part in ast_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
-        if '(' in conversion and ')' not in conversion:
-            open_paren_count += 1
         interpreted_command += str(conversion)
         
-    for _ in range(open_paren_count):
-        if interpreted_command.count('(') != interpreted_command.count(')'):
-            interpreted_command += ')'
+    for _ in range(interpreted_command.count('(') - interpreted_command.count(')')):
+        interpreted_command += ')'
         
     if DEBUG_LEVEL <= DebugLevel.DEBUG:
         print(f'INTERPRETED COMMAND :: {interpreted_command}')
