@@ -1,6 +1,5 @@
 import atexit
 import readline
-
 from promptscript.interpreter import interpret
 from promptscript.ai.chat_router import route_chat
 from promptscript.ai.draw_router import route_draw
