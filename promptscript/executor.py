@@ -6,14 +6,21 @@ from promptscript.ai.listen_router import route_listen
 
 from promptscript.interpreter import interpret
 from promptscript.utils.debug_level import DebugLevel
+from promptscript.utils.config import ILLEGAL_PARAMETER_NAMES
 from promptscript.utils.file import save_to_file, read_file_lines, get_environment_file_path, is_promptscript_file
 
 DEBUG_LEVEL = DebugLevel.INFO
 
-class FileExecutor:
+class BaseExecutor:    
+    def validate_parameters(self, parameters: Dict):
+        for key_name in parameters:
+            if key_name in ILLEGAL_PARAMETER_NAMES:
+                raise ValueError(f"Illegal parameter name '{key_name}'")
+
+class FileExecutor(BaseExecutor):
     """Class for running and getting the yielded output from PromptScript files"""
     
-    def run(self, file_path: str) -> Dict[str, Any]:
+    def run(self, file_path: str, **kwargs) -> Dict[str, Any]:
         """Executes PromptScript file
 
         Args:
@@ -23,6 +30,9 @@ class FileExecutor:
             Dict: Yielded output
         """
         environment_scope, local_scope, output = {}, {}, {}
+        
+        self.validate_parameters(kwargs)
+        local_scope.update(kwargs)
         
         def get_environment_variable(key: str) -> Any:
             if key in environment_scope:
@@ -52,7 +62,7 @@ class FileExecutor:
         
         return output
     
-class CommandExecutor:
+class CommandExecutor(BaseExecutor):
     """Class for running individual PromptScript commands"""
 
     @staticmethod
@@ -60,7 +70,7 @@ class CommandExecutor:
         """Raises error if environment operations are run outside of files."""
         raise NotImplementedError('Environment operations are only avaliable in files.')
     
-    def run(self, command: str) -> Dict[str, Any]:
+    def run(self, command: str, **kwargs) -> Dict[str, Any]:
         """Executes individual PromptScript command
 
         Args:
@@ -71,6 +81,9 @@ class CommandExecutor:
         """
         local_scope, output = {}, {}
         
+        self.validate_parameters(kwargs)
+        local_scope.update(kwargs)
+        
         local_scope['yield_output'] = lambda k, v: output.update({k: v})
         local_scope['get_environment_variable'] = CommandExecutor._get_environment_variable
         
@@ -79,15 +92,18 @@ class CommandExecutor:
         
         return output
     
-class PersistentCommandExecutor:
+class PersistentCommandExecutor(BaseExecutor):
     """Class for running PromptScript commands with context persisting between runs"""
     
     def __init__(self):
         self.local_scope = {}
         self.local_scope['get_environment_variable'] = CommandExecutor._get_environment_variable
         
-    def run(self, command: str) -> Dict[str, Any]:
+    def run(self, command: str, **kwargs) -> Dict[str, Any]:
         output = {}
+        
+        self.validate_parameters(kwargs)
+        self.local_scope.update(kwargs)
         
         self.local_scope['yield_output'] = lambda k, v: output.update({k: v})
         

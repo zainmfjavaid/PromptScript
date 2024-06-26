@@ -1,8 +1,8 @@
 import atexit
 import readline
+from promptscript.utils.config import COMMANDS
 from promptscript.executor import PersistentCommandExecutor
 
-COMMANDS = ['exit', 'save', 'show', 'chat', 'draw', 'listen', 'if', 'elif', 'else', 'for', 'while']
 
 def setup_readline():
     history_file = '.cli_history'
