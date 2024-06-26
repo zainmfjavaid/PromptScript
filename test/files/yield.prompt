@@ -1,0 +1,6 @@
+show "starting yield testing"
+
+x = 5
+y = 3
+
+yield "x", x

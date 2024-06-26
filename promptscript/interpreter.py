@@ -6,13 +6,14 @@ PARSER_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equ
                   'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator', 
                   'listen':'listen_operator', 'if': 'if_conditional', 'elif': 'elif_conditional', 
                   'else': 'else_conditional', 'for': 'for_loop', 'in': 'in_operator', 'while': 'while_loop',
-                  ']': 'chain_close'}
+                  ']': 'chain_close', 'yield': 'yield_operator'}
 INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_environment_variable(', 
                           'save_to_file':'save_to_file(', 'equals':'=', 'chat_operator':'route_chat(',
                           'draw_operator':'route_draw(', 'listen_operator':'route_listen(', 
                           'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else',
-                          'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while ', 'chain_close': ')'}
-STANDALONE_CHARACTERS = ['=', '\t', ':', ']']
+                          'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while ', 'chain_close': ')',
+                          'yield_operator': 'yield_output('}
+STANDALONE_CHARACTERS = ['=', '\t', ':', ']', '\n']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ', '[']
@@ -90,16 +91,25 @@ def parse(command: str, DEBUG_LEVEL: DebugLevel) -> List[Tuple]:
 
 def interpret(command: str, DEBUG_LEVEL: DebugLevel=DebugLevel.INFO) -> str:
     parsed_operations = parse(command, DEBUG_LEVEL)
-    
-    interpreted_command = ''
+
+    interpreted_commands = []
+    current_interpreted_command = ''
     for op_name, part in parsed_operations:
         conversion = INTERPRETER_CONVERSION.get(op_name, part)
-        interpreted_command += str(conversion)
-        
-    for _ in range(interpreted_command.count('(') - interpreted_command.count(')')):
-        interpreted_command += ')'
+        if conversion == '\n':
+            interpreted_commands.append(current_interpreted_command)
+            current_interpreted_command = ''
+            continue
+        else:
+            current_interpreted_command += str(conversion)
+    if current_interpreted_command:
+        interpreted_commands.append(current_interpreted_command)
+    
+    for i, interpreted_command in enumerate(interpreted_commands):
+        for _ in range(interpreted_command.count('(') - interpreted_command.count(')')):
+            interpreted_commands[i] += ')'
         
     if DEBUG_LEVEL <= DebugLevel.DEBUG:
-        print(f'INTERPRETED COMMAND :: {interpreted_command}')
+        print(f'INTERPRETED COMMANDS :: {interpreted_commands}')
         
-    return interpreted_command
+    return '\n'.join(interpreted_commands)
