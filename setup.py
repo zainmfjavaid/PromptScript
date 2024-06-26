@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='promptscript',
-    version='0.1.0',
+    version='0.1.1',
     author='Zain Javaid',
     author_email='zainmfj@gmail.com',
     description='A simple scripting language for interacting with AI',
@@ -12,7 +12,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'promptscript=project.__main__:main',
+            'promptscript=promptscript.__main__:main',
         ],
     },
     install_requires=[
