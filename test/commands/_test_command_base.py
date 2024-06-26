@@ -1,5 +1,11 @@
+import os
+import sys
 import subprocess
-from ...promptscript.interpreter import interpret
+from typing import List
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../promptscript')))
+
+from interpreter import interpret
 
 
 def run_command(command: str) -> subprocess.CompletedProcess:
