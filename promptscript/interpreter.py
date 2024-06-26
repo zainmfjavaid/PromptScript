@@ -1,6 +1,6 @@
 from typing import List, Tuple
-from utils.numbers import is_number
-from utils.debug_level import DebugLevel
+from promptscript.utils.numbers import is_number
+from promptscript.utils.debug_level import DebugLevel
 
 PARSER_CONVERSION = {'show':'print_operator', '"':'quote', "'":'quote', '=':'equals', 'load':'load_operator',
                   'save':'save_to_file', 'chat':'chat_operator', 'draw':'draw_operator', 

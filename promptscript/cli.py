@@ -1,11 +1,12 @@
 import atexit
 import readline
-from utils.save import save_to_file
-from interpreter import interpret
-from utils.debug_level import DebugLevel
-from ai.chat_router import route_chat
-from ai.draw_router import route_draw
-from ai.listen_router import route_listen
+
+from promptscript.interpreter import interpret
+from promptscript.ai.chat_router import route_chat
+from promptscript.ai.draw_router import route_draw
+from promptscript.ai.listen_router import route_listen
+from promptscript.utils.save import save_to_file
+from promptscript.utils.debug_level import DebugLevel
 
 local_scope = {}
 DEBUG_LEVEL = DebugLevel.DEBUG
