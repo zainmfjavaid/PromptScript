@@ -1,3 +1,4 @@
+import os
 import atexit
 import readline
 from promptscript.utils.config import COMMANDS
@@ -5,10 +6,10 @@ from promptscript.executor import PersistentCommandExecutor
 
 
 def setup_readline():
-    history_file = '.cli_history'
+    history_file = '.promptscript-cli_history'
     try:
         readline.read_history_file(history_file)
-    except FileNotFoundError:
+    except Exception as e:
         pass
     readline.set_history_length(1000)
 

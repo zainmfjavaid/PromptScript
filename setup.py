@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='promptscript',
-    version='0.1.1',
+    version='0.1.2',
     author='Zain Javaid',
     author_email='zainmfj@gmail.com',
     description='A simple scripting language for interacting with AI',
