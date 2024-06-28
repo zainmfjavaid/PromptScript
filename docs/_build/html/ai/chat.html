@@ -2,11 +2,12 @@
 <html lang="en" data-accent-color="jade" data-content_root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Chat - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Installation" href="../install.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Chat - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Image Generation" href="draw.html" /><link rel="prev" title="AI" href="index.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=397bb51e" />
     <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=0e780e79" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,12 +56,29 @@ data-aria-dark="Switch to auto color mode">
   <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
     <div class="sy-lside-inner md:sticky">
       <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Getting Started:</span></p>
+        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Chat</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../basic/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic/show.html">Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/conditionals.html">Conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/files.html">File I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/load.html">Environment Variables</a></li>
 </ul>
-
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AI</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="draw.html">Image Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="listen.html">Transcription</a></li>
+</ul>
+</li>
+<li class="toctree-l1 _expand"><a class="reference internal" href="../running/index.html">Running PromptScript</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../running/cli.html">CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running/python.html">Python</a></li>
+</ul>
+</li>
+</ul>
         </div>
       </div></div>
   </aside>
@@ -87,8 +105,12 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Chat</strong>
+        <a itemprop="item" href="index.html"><span itemprop="name">AI</span></a>
+        <span>/</span>
         <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Chat</strong>
+        <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
       <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
@@ -136,10 +158,18 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="../install.html">
+    <a href="index.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Installation</div></div>
+        <span>Previous</span><div class="title">AI</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="draw.html">
+      <div class="page-info">
+        <span>Next</span>
+        <div class="title">Image Generation</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
     </a>
   </div></div></div>
     </div>
@@ -165,5 +195,6 @@ data-aria-dark="Switch to auto color mode">
       <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b0099a1c"></script>
       <script src="../_static/doctools.js?v=888ff710"></script>
       <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="../_static/design-tabs.js?v=36754332"></script>
       <script src="../_static/shibuya.js?v=3cc430e2"></script></body>
 </html>

@@ -6,7 +6,7 @@ from promptscript.executor import PersistentCommandExecutor
 
 
 def setup_readline():
-    history_file = '.promptscript-cli_history'
+    history_file = '.promptscript_cli_history'
     try:
         readline.read_history_file(history_file)
     except Exception as e:

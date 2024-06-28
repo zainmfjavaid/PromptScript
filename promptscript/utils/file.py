@@ -1,10 +1,14 @@
 import os
 from typing import List
 
-# For the 'save' operator
+# For the 'save'/'read' operators
 def save_to_file(value: str, file_path: str):
     with open(file_path, 'w') as f:
         f.write(value)
+        
+def read_file(file_path: str) -> str:
+    with open(file_path, 'r') as f:
+        return f.read()
         
 # Helpers
 def is_promptscript_file(file_path: str) -> bool:

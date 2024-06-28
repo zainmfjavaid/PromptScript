@@ -7,9 +7,9 @@ from promptscript.ai.listen_router import route_listen
 from promptscript.interpreter import interpret
 from promptscript.utils.debug_level import DebugLevel
 from promptscript.utils.config import ILLEGAL_PARAMETER_NAMES
-from promptscript.utils.file import save_to_file, read_file_lines, get_environment_file_path, is_promptscript_file
+from promptscript.utils.file import save_to_file, read_file, read_file_lines, get_environment_file_path, is_promptscript_file
 
-DEBUG_LEVEL = DebugLevel.INFO
+DEBUG_LEVEL = DebugLevel.DEBUG
 
 class BaseExecutor:    
     def validate_parameters(self, parameters: Dict):

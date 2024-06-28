@@ -1,2 +1,2 @@
-# Run this file, passing in 'x' as a parameter
-show x
+# Run this file, passing in 'x' and 'y' as parameters
+show "{}, {}!".format(x, y)

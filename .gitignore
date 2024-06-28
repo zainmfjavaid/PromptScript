@@ -4,4 +4,5 @@ __pycache__/
 *.pyc
 
 .DS_Store
-.promptscript-cli_history
+.cli_history
+.promptscript_cli_history

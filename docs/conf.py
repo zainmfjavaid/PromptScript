@@ -15,7 +15,9 @@ release = '0.1.2'
 
 # -- General configuration ---------------------------------------------------
 
-extensions = []
+extensions = [
+    'sphinx_design',
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
@@ -27,7 +29,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'shibuya'
 html_static_path = ['_static']
 html_theme_options = {
-    'accent_color': 'jade'
+    'accent_color': 'jade',
+    'globaltoc_expand_depth': 1,
 }
 
 def setup(app):
