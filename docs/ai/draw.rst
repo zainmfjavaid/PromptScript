@@ -35,3 +35,12 @@ Syntax
     If no ``destination_file`` is specified:
 
         **str**: Link to generated image.
+
+Supported Models
+----------------
+
+.. tabs::
+
+    .. tab:: OpenAI
+
+        ``dall-e-3``, ``dall-e-2``

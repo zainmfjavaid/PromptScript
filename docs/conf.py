@@ -17,6 +17,7 @@ release = '0.1.2'
 
 extensions = [
     'sphinx_design',
+    'sphinx_tabs.tabs'
 ]
 
 templates_path = ['_templates']

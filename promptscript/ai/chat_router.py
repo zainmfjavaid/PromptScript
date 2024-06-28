@@ -1,4 +1,5 @@
 from openai import OpenAI
+from promptscript.utils.config import OPENAI_CHAT_MODELS
         
 
 def chat_openai(prompt: str, model: str, api_key: str) -> str:
@@ -13,6 +14,6 @@ def chat_openai(prompt: str, model: str, api_key: str) -> str:
     return completion.choices[0].message.content
 
 def route_chat(prompt: str, model: str, api_key: str) -> str:
-    if model.lower().startswith('gpt'):
+    if model.lower() in OPENAI_CHAT_MODELS:
         return chat_openai(prompt, model, api_key)
     raise Exception('ERROR: Invalid chat model')
