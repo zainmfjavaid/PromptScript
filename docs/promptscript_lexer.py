@@ -1,5 +1,5 @@
 from pygments.lexer import RegexLexer
-from pygments.token import Text, Keyword, Name
+from pygments.token import Text, Keyword, Name, String, Number, Comment
 
 class PromptScriptLexer(RegexLexer):
     name = 'PromptScript'
@@ -8,8 +8,12 @@ class PromptScriptLexer(RegexLexer):
 
     tokens = {
         'root': [
-            (r'\b(show|chat|draw|listen|save|yield|if|elif|else|for|while|load)\b', Keyword),
+            (r'\b(if|elif|else|for|while|in)\b', Keyword),
+            (r'\b(show|chat|draw|listen|save|yield|load|read)\b', Name.Builtin),
             (r'\b(prompt|model|api_key)\b', Name.Variable),
-            (r'.', Text),
+            (r'"[^"\\]*(?:\\.[^"\\]*)*"', String),
+            (r'\b\d+\b', Number),
+            (r'#.*', Comment.Single),
+            (r'.', Text)
         ],
     }

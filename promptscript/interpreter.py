@@ -13,7 +13,8 @@ INTERPRETER_CONVERSION = {'print_operator':'print(', 'load_operator':'get_enviro
                           'if_conditional': 'if ', 'elif_conditional': 'elif ', 'else_conditional': 'else',
                           'for_loop': 'for ', 'in_operator': ' in ', 'while_loop': 'while ', 'chain_close': ')',
                           'yield_operator': 'yield_output(', 'read_operator':'read_file('}
-STANDALONE_CHARACTERS = ['=', '\t', ':', ']', '\n']
+PORTED_OPERATIONS = ['.format']
+STANDALONE_CHARACTERS = ['=', '\t', ':', ']', '\n', '(']
 PROTECTED_BLOCK_CHARACTERS = ['"', "'"]
 OPERATOR_CHARACTERS = ['+', '-', '*', '/']
 NEW_PART_CHARACTERS = [' ', '[']
@@ -42,15 +43,16 @@ def lex(command: str, DEBUG_LEVEL: DebugLevel) -> List[str]:
             else:
                 current_block += char
         
-        elif char not in NEW_PART_CHARACTERS:
-            current_block += char
-        
-        elif char in NEW_PART_CHARACTERS:
+        elif char in NEW_PART_CHARACTERS or current_block in PORTED_OPERATIONS:
             if not is_protected_block:
                 parts.append(current_block)
                 current_block = ''
             else:
                 current_block += char
+        
+        elif char not in NEW_PART_CHARACTERS:
+            current_block += char
+        
     if len(current_block) != 0:
         parts.append(current_block)
     parts = [part for part in parts if part != '']

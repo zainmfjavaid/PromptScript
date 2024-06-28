@@ -35,6 +35,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -65,6 +68,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="../basic/loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/files.html">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/load.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">AI</a><ul class="current">
@@ -87,7 +91,10 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#syntax">Syntax</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
@@ -123,7 +130,31 @@ data-aria-dark="Switch to auto color mode">
 <h1>Image Generation<a class="headerlink" href="#image-generation" title="Permalink to this heading">¶</a></h1>
 <p class="lead">Using <code class="docutils literal notranslate"><span class="pre">draw</span></code> to generate and edit images</p>
 <hr class="docutils" />
-<p>Use <code class="docutils literal notranslate"><span class="pre">draw</span></code></p>
+<p>PromptScript supports image generation through the <code class="docutils literal notranslate"><span class="pre">draw</span></code> keyword.</p>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">draw</span> <span class="nv">prompt</span>, <span class="nv">model</span>, <span class="nv">api_key</span>, destination_file
+</span></pre></div>
+</div>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>prompt</strong> (str: required): Prompt to generate image based on.</p>
+<p><strong>model</strong> (str: required): What image generation model to send the prompt to.</p>
+<p><strong>api_key</strong> (str: required): The API key for whatever service you’re sending the chat to.</p>
+<p><strong>destination_file</strong> (str: optional): File path to save generated image to</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p>If <code class="docutils literal notranslate"><span class="pre">destination_file</span></code> is specified:</p>
+<blockquote>
+<div><p><strong>None</strong>.</p>
+</div></blockquote>
+<p>If no <code class="docutils literal notranslate"><span class="pre">destination_file</span></code> is specified:</p>
+<blockquote>
+<div><p><strong>str</strong>: Link to generated image.</p>
+</div></blockquote>
+</div></blockquote>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -162,7 +193,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

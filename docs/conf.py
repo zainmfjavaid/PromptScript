@@ -31,6 +31,7 @@ html_static_path = ['_static']
 html_theme_options = {
     'accent_color': 'jade',
     'globaltoc_expand_depth': 1,
+    'github_url': 'https://github.com/zainmfjavaid/PromptScript'
 }
 
 def setup(app):

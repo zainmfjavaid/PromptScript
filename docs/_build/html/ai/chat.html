@@ -35,6 +35,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -65,6 +68,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="../basic/loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/files.html">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/load.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">AI</a><ul class="current">
@@ -124,31 +128,24 @@ data-aria-dark="Switch to auto color mode">
         <article class="yue" role="main">
           <section id="chat">
 <h1>Chat<a class="headerlink" href="#chat" title="Permalink to this heading">¶</a></h1>
-<p class="lead">Chat with LLMs.</p>
+<p class="lead">Using <code class="docutils literal notranslate"><span class="pre">chat</span></code> to interact with LLMs</p>
 <hr class="docutils" />
 <p>PromptScript supports chatting with LLMs through the <code class="docutils literal notranslate"><span class="pre">chat</span></code> keyword.</p>
 <section id="syntax">
 <h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">show</span> <span class="nv">prompt</span>, <span class="nv">model</span>, <span class="nv">api_key</span>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">chat</span> <span class="nv">prompt</span>, <span class="nv">model</span>, <span class="nv">api_key</span>
 </span></pre></div>
 </div>
-<ul class="simple">
-<li><dl class="simple">
-<dt>prompt (required)</dt><dd><p>Prompt to send to LLM.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>model (required)</dt><dd><p>What LLM to send the prompt to.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>api_key (required)</dt><dd><p>The API key for whatever service you’re sending the chat to.</p>
-</dd>
-</dl>
-</li>
-</ul>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>prompt</strong> (str: required): Prompt to send to LLM.</p>
+<p><strong>model</strong> (str: required): What LLM to send the prompt to.</p>
+<p><strong>api_key</strong> (str: required): The API key for whatever service you’re sending the chat to.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p><strong>str</strong>: Text response from the LLM.</p>
+</div></blockquote>
 </section>
 </section>
 
@@ -188,7 +185,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

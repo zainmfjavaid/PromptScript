@@ -20,7 +20,7 @@ def is_promptscript_file(file_path: str) -> bool:
     return False
 
 def get_environment_file_path(file_path: str) -> str:
-    return f'{os.path.splitext(file_path)[0]}.env.prompt'
+    return f'{os.path.split(file_path)[0]}/.env.prompt'
 
 def read_file_lines(file_path: str) -> List[str]:
     if not os.path.exists(file_path):

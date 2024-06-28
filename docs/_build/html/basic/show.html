@@ -37,6 +37,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -67,6 +70,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../ai/index.html">AI</a><ul>
@@ -125,7 +129,27 @@ data-aria-dark="Switch to auto color mode">
 <h1>Printing<a class="headerlink" href="#printing" title="Permalink to this heading">¶</a></h1>
 <p class="lead">Using <code class="docutils literal notranslate"><span class="pre">show</span></code> to print values in PromptScript.</p>
 <hr class="docutils" />
-<p>Use <code class="docutils literal notranslate"><span class="pre">show</span></code></p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="nb">show</span> <span class="s">&quot;Hello, World!&quot;</span>
+</span><span data-line="2"><span class="linenos">2</span><span class="nb">show</span> <span class="s">&quot;{} - {}&quot;</span>.format(<span class="s">&quot;Slot 1&quot;</span>, <span class="s">&quot;Slot 2&quot;</span>)
+</span></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Strings can also be created with single quotes</p>
+</div>
+<p>You can also print variables:</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1">message = <span class="s">&quot;Hello, World!&quot;</span>
+</span><span data-line="2"><span class="nb">show</span> message
+</span></pre></div>
+</div>
+<p>Or the output from another process:</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">show</span> [<span class="nb">read</span> <span class="s">&quot;file.txt&quot;</span>]
+</span></pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) are for chaining. Learn more about <a class="reference internal" href="chaining.html#id1"><span class="std std-ref">operation chaining</span></a> here.</p>
+</div>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -164,7 +188,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

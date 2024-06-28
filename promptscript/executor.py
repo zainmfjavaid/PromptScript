@@ -9,7 +9,7 @@ from promptscript.utils.debug_level import DebugLevel
 from promptscript.utils.config import ILLEGAL_PARAMETER_NAMES
 from promptscript.utils.file import save_to_file, read_file, read_file_lines, get_environment_file_path, is_promptscript_file
 
-DEBUG_LEVEL = DebugLevel.DEBUG
+DEBUG_LEVEL = DebugLevel.INFO
 
 class BaseExecutor:    
     def validate_parameters(self, parameters: Dict):

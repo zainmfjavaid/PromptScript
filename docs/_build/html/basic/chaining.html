@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="jade" data-content_root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Loops - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="File I/O" href="files.html" /><link rel="prev" title="Conditionals" href="conditionals.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Chaining - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AI" href="../ai/index.html" /><link rel="prev" title="Environment Variables" href="load.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=397bb51e" />
@@ -18,10 +18,10 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Loops"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Chaining"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="description" content="How to use loops in PromptScript"/>
-<meta property="og:description" content="How to use loops in PromptScript"/>
+<meta name="description" content="How to read chain together commands in PromptScript?"/>
+<meta property="og:description" content="How to read chain together commands in PromptScript?"/>
   </head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
@@ -67,10 +67,10 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="show.html">Printing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">Environment Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chaining.html">Chaining</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../ai/index.html">AI</a><ul>
@@ -93,11 +93,7 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
-<li><a class="reference internal" href="#for-loops">For Loops</a></li>
-<li><a class="reference internal" href="#while-loops">While Loops</a></li>
-</ul>
-</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
@@ -116,7 +112,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Loops</strong>
+        <strong itemprop="name">Chaining</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -129,39 +125,19 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
         <article class="yue" role="main">
-          <section id="loops">
-<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">¶</a></h1>
-<p class="lead">Writing <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops in PromptScript.</p>
+          <section id="chaining">
+<h1>Chaining<a class="headerlink" href="#chaining" title="Permalink to this heading">¶</a></h1>
+<p class="lead">Chaning multiple PromptScript commands together.</p>
 <hr class="docutils" />
-<p>Loops in PromptScript function the same as in Python:</p>
-<section id="for-loops">
-<h2>For Loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">for</span> i <span class="k">in</span> range(<span class="m">1</span>, <span class="m">11</span>):
-</span><span data-line="2">    <span class="nb">show</span> i
+<p id="id1">To pass the output of one process as the parameter of another, surround it in square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>). Example:</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">save</span> [<span class="nb">chat</span> <span class="s">&quot;&lt;prompt&gt;&quot;</span>, <span class="s">&quot;&lt;model&gt;&quot;</span>, <span class="s">&quot;&lt;api_key&gt;&quot;</span>], <span class="s">&quot;file.txt&quot;</span>
 </span></pre></div>
 </div>
-<p>You can also use <code class="docutils literal notranslate"><span class="pre">len</span></code>:</p>
-<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1">string = <span class="s">&quot;word&quot;</span>
-</span><span data-line="2"><span class="k">for</span> i <span class="k">in</span> range(len(string)):
-</span><span data-line="3">    <span class="nb">show</span> i
-</span></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Chaining isn’t required for passing the output of one process into a method that only takes one parameter
+(e.g. <code class="docutils literal notranslate"><span class="pre">show</span></code>). It’s still recommended for readability.</p>
 </div>
-<p>Or iterate through values:</p>
-<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1">string = <span class="s">&quot;word&quot;</span>
-</span><span data-line="2"><span class="k">for</span> character <span class="k">in</span> string:
-</span><span data-line="3">    <span class="nb">show</span> character
-</span></pre></div>
-</div>
-</section>
-<section id="while-loops">
-<h2>While Loops<a class="headerlink" href="#while-loops" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1">x = <span class="m">10</span>
-</span><span data-line="2"><span class="k">while</span> x &gt; <span class="m">0</span>:
-</span><span data-line="3">    <span class="nb">show</span> x
-</span><span data-line="4">    x -= <span class="m">1</span>
-</span></pre></div>
-</div>
-</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -170,16 +146,16 @@ data-aria-dark="Switch to auto color mode">
   </svg>
   <span>Back to top</span>
 </button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="conditionals.html">
+    <a href="load.html">
       <i class="i-lucide chevron-left"></i>
       <div class="page-info">
-        <span>Previous</span><div class="title">Conditionals</div></div>
+        <span>Previous</span><div class="title">Environment Variables</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="files.html">
+    <a href="../ai/index.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">File I/O</div>
+        <div class="title">AI</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>

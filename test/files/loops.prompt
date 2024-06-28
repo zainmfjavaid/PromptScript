@@ -1,10 +1,16 @@
 for i in range(5):
     show i
 
+
 show "done with first for loop, starting second"
 
 for j in range(1, 10):
     show j
+
+show "done with second for loop, starting third"
+
+for k in range(1, len("four")):
+    show k
 
 show "done with for loops, starting while loop"
 

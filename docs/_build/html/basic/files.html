@@ -37,6 +37,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -67,6 +70,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="load.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../ai/index.html">AI</a><ul>
@@ -89,7 +93,12 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#reading-files">Reading Files</a></li>
+<li><a class="reference internal" href="#writing-files">Writing Files</a></li>
+<li><a class="reference internal" href="#example-usage">Example Usage</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
@@ -125,7 +134,52 @@ data-aria-dark="Switch to auto color mode">
 <h1>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this heading">¶</a></h1>
 <p class="lead">Using <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code> to perform basic file I/O operations in PromptScript.</p>
 <hr class="docutils" />
-<p>Use <code class="docutils literal notranslate"><span class="pre">read</span></code> and <code class="docutils literal notranslate"><span class="pre">save</span></code></p>
+<p>PromptScript currently only supports basic file I/O operations on non-binary files.</p>
+<section id="reading-files">
+<h2>Reading Files<a class="headerlink" href="#reading-files" title="Permalink to this heading">¶</a></h2>
+<p>To read the content of files, use the <code class="docutils literal notranslate"><span class="pre">read</span></code> command</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">read</span> file_path
+</span></pre></div>
+</div>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>file_path</strong> (str: required): File path to read from.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p><strong>str</strong>: The file’s text content.</p>
+</div></blockquote>
+</section>
+<section id="writing-files">
+<h2>Writing Files<a class="headerlink" href="#writing-files" title="Permalink to this heading">¶</a></h2>
+<p>To write to files, use the <code class="docutils literal notranslate"><span class="pre">save</span></code> command</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">save</span> content, file_path
+</span></pre></div>
+</div>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>content</strong> (str: required): Text to write to file.</p>
+<p><strong>file_path</strong> (str: required): File path to read from.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p><strong>None</strong>.</p>
+</div></blockquote>
+</section>
+<section id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">¶</a></h2>
+<div class="demo docutils container">
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span>message = <span class="s">&quot;File Content&quot;</span>
+</span><span data-line="2"><span class="linenos">2</span>
+</span><span data-line="3"><span class="hll"><span class="linenos">3</span><span class="nb">save</span> message, <span class="s">&quot;file.txt&quot;</span>
+</span></span><span data-line="4"><span class="hll"><span class="linenos">4</span><span class="nb">show</span> [<span class="nb">read</span> <span class="s">&quot;file.txt&quot;</span>]
+</span></span></pre></div>
+</div>
+<div class="demo-result highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">Output</span><span class="p">:</span> <span class="n">File</span> <span class="n">Content</span>
+</span></pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -164,7 +218,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

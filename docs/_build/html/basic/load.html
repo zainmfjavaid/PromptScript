@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="jade" data-content_root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Environment Variables - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AI" href="../ai/index.html" /><link rel="prev" title="File I/O" href="files.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Environment Variables - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Chaining" href="chaining.html" /><link rel="prev" title="File I/O" href="files.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=397bb51e" />
@@ -37,6 +37,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -67,6 +70,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">File I/O</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 _expand"><a class="reference internal" href="../ai/index.html">AI</a><ul>
@@ -89,7 +93,11 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#creating-an-environment-file">Creating an Environment File</a></li>
+<li><a class="reference internal" href="#accessing-environment-variables">Accessing Environment Variables</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
@@ -125,7 +133,60 @@ data-aria-dark="Switch to auto color mode">
 <h1>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading">¶</a></h1>
 <p class="lead">Using <code class="docutils literal notranslate"><span class="pre">load</span></code> to access PromptScript environment files.</p>
 <hr class="docutils" />
-<p>Use <code class="docutils literal notranslate"><span class="pre">load</span></code></p>
+<p>PromptScript has its own environment management system.</p>
+<section id="creating-an-environment-file">
+<h2>Creating an Environment File<a class="headerlink" href="#creating-an-environment-file" title="Permalink to this heading">¶</a></h2>
+<p>You can create a PromptScript environment file be creating a file with the name <code class="docutils literal notranslate"><span class="pre">.env.prompt</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">.env.prompt</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span>API_KEY=<span class="s">&quot;SUPER_SECRET&quot;</span>
+</span><span data-line="2"><span class="linenos">2</span>CHAT_MODEL=<span class="s">&quot;LLM-01&quot;</span>
+</span></pre></div>
+</div>
+</div>
+<p>You can also run PromptScript code in your <code class="docutils literal notranslate"><span class="pre">.env.prompt</span></code> file:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">.env.prompt</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span>prod = True
+</span><span data-line="2"><span class="linenos">2</span>
+</span><span data-line="3"><span class="linenos">3</span><span class="k">if</span> prod:
+</span><span data-line="4"><span class="linenos">4</span>    API_KEY=<span class="s">&quot;PROD_KEY&quot;</span>
+</span><span data-line="5"><span class="linenos">5</span><span class="k">else</span>:
+</span><span data-line="6"><span class="linenos">6</span>    API_KEY=<span class="s">&quot;TESTING_KEY&quot;</span>
+</span><span data-line="7"><span class="linenos">7</span>CHAT_MODEL=<span class="s">&quot;LLM-01&quot;</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="accessing-environment-variables">
+<h2>Accessing Environment Variables<a class="headerlink" href="#accessing-environment-variables" title="Permalink to this heading">¶</a></h2>
+<p>To access environment variables from a PromptScript file, you can use the <code class="docutils literal notranslate"><span class="pre">load</span></code> keyword</p>
+<hr class="docutils" />
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">load</span> variable_name
+</span></pre></div>
+</div>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>variable_name</strong> (str: required): Name of the variable to load from the <code class="docutils literal notranslate"><span class="pre">.env.prompt</span></code> file.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p><strong>Any</strong>: The variable’s value.</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>So, for this example, we could access the <code class="docutils literal notranslate"><span class="pre">API_KEY</span></code> and <code class="docutils literal notranslate"><span class="pre">CHAT_MODEL</span></code> fields like this:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">file.prompt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="nv">api_key</span> = <span class="nb">load</span> <span class="s">&quot;API_KEY&quot;</span>
+</span><span data-line="2"><span class="linenos">2</span>chat_model = <span class="nb">load</span> <span class="s">&quot;CHAT_MODEL&quot;</span>
+</span></pre></div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure your PromptScript file and environment file are in the same directory!</p>
+</div>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -140,10 +201,10 @@ data-aria-dark="Switch to auto color mode">
         <span>Previous</span><div class="title">File I/O</div></div>
     </a>
   </div><div class="navigation-next">
-    <a href="../ai/index.html">
+    <a href="chaining.html">
       <div class="page-info">
         <span>Next</span>
-        <div class="title">AI</div>
+        <div class="title">Chaining</div>
       </div>
       <i class="i-lucide chevron-right"></i>
     </a>
@@ -164,7 +225,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

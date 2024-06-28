@@ -44,7 +44,7 @@ def run_cli():
             if command.lower() == 'exit':
                 break
             
-            if command.lower().startswith(('if', 'elif', 'else')):
+            if command.lower().startswith(('if', 'elif', 'else', 'for', 'while')):
                 in_buffer = True
             
             if in_buffer:

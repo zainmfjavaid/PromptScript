@@ -35,6 +35,9 @@
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
 </form><div class="sy-head-socials flex items-center">
+    <a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub">
+      <i class="i-simpleicons github"></i>
+    </a>
 </div></div>
     </div>
     <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
@@ -65,6 +68,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="../basic/loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/files.html">File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../basic/load.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic/chaining.html">Chaining</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">AI</a><ul class="current">
@@ -87,7 +91,10 @@ data-aria-dark="Switch to auto color mode">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#syntax">Syntax</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
   <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
   <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
@@ -121,9 +128,29 @@ data-aria-dark="Switch to auto color mode">
         <article class="yue" role="main">
           <section id="transcription">
 <h1>Transcription<a class="headerlink" href="#transcription" title="Permalink to this heading">¶</a></h1>
-<p class="lead">Using <code class="docutils literal notranslate"><span class="pre">listen</span></code> to perform speech-to-text tasks.</p>
+<p class="lead">Using <code class="docutils literal notranslate"><span class="pre">listen</span></code> to perform speech-to-text tasks</p>
 <hr class="docutils" />
-<p>Use <code class="docutils literal notranslate"><span class="pre">listen</span></code></p>
+<p>PromptScript currently supports audio transcription using <a class="reference external" href="https://openai.com/index/whisper/">OpenAI’s Whisper</a>
+through the <code class="docutils literal notranslate"><span class="pre">listen</span></code> keyword.</p>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">listen</span> file_path, <span class="nv">api_key</span>
+</span></pre></div>
+</div>
+<p><strong>Parameters</strong></p>
+<blockquote>
+<div><p><strong>file_path</strong> (str: required): File to transcribe.</p>
+<p><strong>api_key</strong> (str: required): OpenAI API key.</p>
+</div></blockquote>
+<p><strong>Output</strong></p>
+<blockquote>
+<div><p><strong>str</strong>: Transcribed text.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following file formats are supported: <code class="docutils literal notranslate"><span class="pre">.mp3</span></code>, <code class="docutils literal notranslate"><span class="pre">.mp4</span></code>, <code class="docutils literal notranslate"><span class="pre">.wav</span></code>, <code class="docutils literal notranslate"><span class="pre">.mpeg</span></code>, <code class="docutils literal notranslate"><span class="pre">.mpga</span></code>, <code class="docutils literal notranslate"><span class="pre">.webm</span></code></p>
+</div>
+</section>
 </section>
 
         </article><button class="back-to-top" type="button">
@@ -162,7 +189,8 @@ data-aria-dark="Switch to auto color mode">
     <a href="https://shibuya.lepture.com">Shibuya theme</a>.
   </p>
 </div>
-      <div class="sy-foot-socials"></div>
+      <div class="sy-foot-socials">
+<a href="https://github.com/zainmfjavaid/PromptScript" aria-label="GitHub"><i class="i-simpleicons github"></i></a></div>
     </div>
   </div>
 </footer>

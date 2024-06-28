@@ -3,7 +3,7 @@ Chat
 
 .. rst-class:: lead
 
-    Chat with LLMs.
+    Using ``chat`` to interact with LLMs
 
 ----
 
@@ -14,11 +14,16 @@ Syntax
 
 .. code-block:: promptscript
 
-    show prompt, model, api_key
+    chat prompt, model, api_key
 
-* prompt (required)
-    Prompt to send to LLM.
-* model (required)
-    What LLM to send the prompt to.
-* api_key (required)
-    The API key for whatever service you're sending the chat to.
+**Parameters**
+
+    **prompt** (str: required): Prompt to send to LLM.
+
+    **model** (str: required): What LLM to send the prompt to.
+
+    **api_key** (str: required): The API key for whatever service you're sending the chat to.
+
+**Output**
+
+    **str**: Text response from the LLM.
