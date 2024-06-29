@@ -1,8 +1,8 @@
 from typing import Dict, Any
 
-from promptscript.ai.chat_router import route_chat
-from promptscript.ai.draw_router import route_draw
-from promptscript.ai.listen_router import route_listen
+from promptscript.ai.chat import route_chat
+from promptscript.ai.draw import route_draw
+from promptscript.ai.listen import route_listen
 
 from promptscript.interpreter import interpret
 from promptscript.utils.debug_level import DebugLevel

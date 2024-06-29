@@ -36,3 +36,10 @@ Supported Models
     .. tab:: OpenAI
 
         ``gpt-3.5-turbo``, ``gpt-4``, ``gpt-4-turbo``, ``gpt-4-turbo-preview``, ``gpt-4o``
+
+    .. tab:: Anthropic
+
+        ``claude-3-5-sonnet``, ``claude-3-opus``, ``claude-3-sonnet``, ``claude-3-haiku``
+
+        .. note:: These are aliases for the latest versions of each of these models. You can also specify a specific
+            release (e.g. ``claude-3-5-sonnet-20240620``).
