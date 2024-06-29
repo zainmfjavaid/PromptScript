@@ -61,11 +61,40 @@ The CommandExecutor also supports passing in parameters.
 
     command_executor.run('show msg', msg='Hello, World!')
 
+Persistent Command Execution
+----------------------------
+
+Imagine you want to run a sequence of individual commands that have access to the outputs of the previous commands. Of course,
+this is possible with the base ``CommandExecutor`` class through the use of parameters, but this approach is clunky and
+inefficient. That's where the ``PersistentCommandExecutor`` comes in.
+
+The ``PersistentCommandExecutor`` will save the output of commands run previously so you can reference previously set values.
+
+
+.. container:: demo
+
+    .. code-block:: python
+        :linenos:
+        :caption: main.py
+
+        from promptscript.executor import PersistentCommandExecutor
+
+
+        persistent_command_executor = PersistentCommandExecutor()
+        persistent_command_executor.run('x += 1', x=5)
+        persistent_command_executor.run('show x')
+
+    .. code-block:: python
+        :class: demo-result
+
+        6
+
 Getting Output from PromptScript
 --------------------------------
 
 To make output from PromptScript files avaliable in Python, you can use the ``yield`` command. The first argument to ``yield`` is
-the key to make the value avaliable through, while the second argument is the value itself.
+the key to make the value avaliable through, while the second argument is the value itself. If no yield statements are present
+in the PromptScript code being executed, each of the command executors will return ``{}``.
 
 .. important:: ``yield`` **does not** operate like return in Python. Code after a ``yield`` statement **will be executed**.
 
@@ -78,7 +107,6 @@ the key to make the value avaliable through, while the second argument is the va
     yield "chat_response", chat_response
 
 We can then access the value of chat_response:
-
 
 .. container:: demo
 
