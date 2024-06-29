@@ -1,6 +1,7 @@
 from openai import OpenAI
 
 
+# Provider methods
 def listen_openai(audio_file_path: str, api_key: str) -> str:
     client = OpenAI(api_key=api_key)
     audio_file = open(audio_file_path, 'rb')
@@ -11,5 +12,6 @@ def listen_openai(audio_file_path: str, api_key: str) -> str:
     )
     return transcription
 
+# Router
 def route_listen(audio_file_path: str, api_key: str) -> str:
     return listen_openai(audio_file_path, api_key)

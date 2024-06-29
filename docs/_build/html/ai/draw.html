@@ -143,24 +143,18 @@ data-aria-dark="Switch to auto color mode">
 <div><p><strong>prompt</strong> (str: required): Prompt to generate image based on.</p>
 <p><strong>model</strong> (str: required): What image generation model to send the prompt to.</p>
 <p><strong>api_key</strong> (str: required): The API key for whatever service you’re sending the chat to.</p>
-<p><strong>destination_file</strong> (str: optional): File path to save generated image to</p>
+<p><strong>destination_file</strong> (str: required): File path to save generated image to</p>
 </div></blockquote>
 <p><strong>Output</strong></p>
 <blockquote>
-<div><p>If <code class="docutils literal notranslate"><span class="pre">destination_file</span></code> is specified:</p>
-<blockquote>
-<div><p><strong>None</strong>.</p>
-</div></blockquote>
-<p>If no <code class="docutils literal notranslate"><span class="pre">destination_file</span></code> is specified:</p>
-<blockquote>
-<div><p><strong>str</strong>: Link to generated image.</p>
-</div></blockquote>
+<div><p><strong>None</strong> (output saved to destination_file)</p>
 </div></blockquote>
 </section>
 <section id="supported-models">
 <h2>Supported Models<a class="headerlink" href="#supported-models" title="Permalink to this heading">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">OpenAI</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">dall-e-3</span></code>, <code class="docutils literal notranslate"><span class="pre">dall-e-2</span></code></p>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">OpenAI</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Stability AI</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">dall-e-3</span></code>, <code class="docutils literal notranslate"><span class="pre">dall-e-2</span></code></p>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p><code class="docutils literal notranslate"><span class="pre">ultra</span></code>, <code class="docutils literal notranslate"><span class="pre">core</span></code>, <code class="docutils literal notranslate"><span class="pre">sd3</span></code></p>
 </div></div>
 </section>
 </section>

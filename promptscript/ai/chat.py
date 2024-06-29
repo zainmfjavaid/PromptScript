@@ -6,7 +6,7 @@ from promptscript.utils.config import (
     ANTHROPIC_CHAT_MAPPING
 )
 
-
+# Provider methods
 def chat_openai(prompt: str, model: str, api_key: str) -> str:
     client = OpenAI(api_key=api_key)
     completion = client.chat.completions.create(
@@ -30,6 +30,7 @@ def chat_anthropic(prompt: str, model: str, api_key: str) -> str:
     )
     return message.content[0].text
 
+# Router
 def route_chat(prompt: str, model: str, api_key: str) -> str:
     model = model.lower()
     

@@ -24,17 +24,11 @@ Syntax
 
     **api_key** (str: required): The API key for whatever service you're sending the chat to.
 
-    **destination_file** (str: optional): File path to save generated image to
+    **destination_file** (str: required): File path to save generated image to
 
 **Output**
-
-    If ``destination_file`` is specified:
-
-        **None**.
-
-    If no ``destination_file`` is specified:
-
-        **str**: Link to generated image.
+    
+    **None** (output saved to destination_file)
 
 Supported Models
 ----------------
@@ -44,3 +38,7 @@ Supported Models
     .. tab:: OpenAI
 
         ``dall-e-3``, ``dall-e-2``
+
+    .. tab:: Stability AI
+
+        ``ultra``, ``core``, ``sd3``

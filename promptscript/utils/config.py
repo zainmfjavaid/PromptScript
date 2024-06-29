@@ -12,3 +12,5 @@ ANTHROPIC_CHAT_MODELS = ['claude-3-5-sonnet-20240620', 'claude-3-opus-20240229',
 ANTHROPIC_CHAT_MAPPING = {'claude-3.5-sonnet': 'claude-3-5-sonnet-20240620', 'claude-3-5-sonnet': 'claude-3-5-sonnet-20240620',
                           'claude-3-opus': 'claude-3-opus-20240229', 'claude-3-sonnet': 'claude-3-sonnet-20240229',
                           'claude-3-haiku': 'claude-3-haiku-20240307'}
+
+STABILITY_IMAGE_MODELS = ['ultra', 'core', 'sd3']
