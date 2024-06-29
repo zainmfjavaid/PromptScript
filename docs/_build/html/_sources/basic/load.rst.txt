@@ -1,7 +1,7 @@
 :description: How to read environment variables in PromptScript?
 
-Environment Variables
-=====================
+Environment Files
+=================
 
 .. rst-class:: lead
 

@@ -22,7 +22,7 @@ PromptScript
    :padding: 0
    :class-row: surface
 
-   .. grid-item-card:: :octicon:`comment` Chat
+   .. grid-item-card:: :octicon:`comment-discussion` Chat
       :link: ai/chat.html
         
       Chat with different large language models (LLMs) in a single line of code.
@@ -30,12 +30,25 @@ PromptScript
    .. grid-item-card:: :octicon:`paintbrush` Image Generation
       :link: ai/draw.html
 
-      Generate or edit images in different styles, without any boilerplate.
+      Generate or edit images in different styles.
 
    .. grid-item-card:: :octicon:`unmute` Audio Transcription
       :link: ai/listen.html
 
       Powerful and configurable speech-to-text functionality out-of-the-box.
+
+   .. grid-item-card:: :octicon:`zap` Efficient
+        
+      No boilerplate. Perform complex tasks without a sprawling codebase.
+
+   .. grid-item-card:: :octicon:`rocket` Simple Syntax
+
+      Simple, easy-to-learn syntax pattern.
+
+   
+   .. grid-item-card:: :octicon:`beaker` Flexible
+
+      Run on its own, or embedded in Python applications.
 
 .. toctree::
    :caption: Contents:

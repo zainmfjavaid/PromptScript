@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="jade" data-content_root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Environment Variables - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Chaining" href="chaining.html" /><link rel="prev" title="File I/O" href="files.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Environment Files - PromptScript 0.1.2 documentation</title><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Chaining" href="chaining.html" /><link rel="prev" title="File I/O" href="files.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=397bb51e" />
@@ -19,7 +19,7 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="Environment Variables"/>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Environment Files"/>
 <meta name="twitter:card" content="summary"/>
 <meta name="description" content="How to read environment variables in PromptScript?"/>
 <meta property="og:description" content="How to read environment variables in PromptScript?"/>
@@ -70,7 +70,7 @@ data-aria-dark="Switch to auto color mode">
 <li class="toctree-l2"><a class="reference internal" href="conditionals.html">Conditionals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">File I/O</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Environment Variables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Environment Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chaining.html">Chaining</a></li>
 </ul>
 </li>
@@ -117,7 +117,7 @@ data-aria-dark="Switch to auto color mode">
         <span>/</span>
         <meta itemprop="position" content="2" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">Environment Variables</strong>
+        <strong itemprop="name">Environment Files</strong>
         <meta itemprop="position" content="3" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -130,8 +130,8 @@ data-aria-dark="Switch to auto color mode">
 </div><div class="flex flex-col break-words justify-between">
       <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
         <article class="yue" role="main">
-          <section id="environment-variables">
-<h1>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading">¶</a></h1>
+          <section id="environment-files">
+<h1>Environment Files<a class="headerlink" href="#environment-files" title="Permalink to this heading">¶</a></h1>
 <p class="lead">Using <code class="docutils literal notranslate"><span class="pre">load</span></code> to access PromptScript environment files.</p>
 <hr class="docutils" />
 <p>PromptScript has its own environment management system.</p>
