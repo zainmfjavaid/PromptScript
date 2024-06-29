@@ -22,6 +22,7 @@ setup(
         'sphinx-tabs==3.4.5',
         'sphinx_design==0.5.0',
         'twine==5.1.1',
+        'anthropic==0.30.0'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
