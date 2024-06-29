@@ -30,6 +30,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'shibuya'
 html_static_path = ['_static']
+html_favicon = '_static/favicon.ico'
 html_theme_options = {
     'accent_color': 'jade',
     'globaltoc_expand_depth': 1,
