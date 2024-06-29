@@ -97,6 +97,7 @@ data-aria-dark="Switch to auto color mode">
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#running-promptscript-files">Running PromptScript Files</a></li>
 <li><a class="reference internal" href="#running-commands">Running Commands</a></li>
+<li><a class="reference internal" href="#getting-output-from-promptscript">Getting Output from PromptScript</a></li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
   </aside>
@@ -147,11 +148,25 @@ data-aria-dark="Switch to auto color mode">
 </span></pre></div>
 </div>
 </div>
+<p>You can also pass parameters into the executor:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="n">file_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;file.prompt&#39;</span><span class="p">,</span> <span class="n">user_prompt</span><span class="o">=</span><span class="s1">&#39;What is 2+2?&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p>Then access them directly from your PromptScript file.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">file.prompt</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span>chat_response = <span class="nb">chat</span> user_prompt, <span class="s">&quot;gpt-4o&quot;</span>, <span class="s">&quot;API_KEY&quot;</span>
+</span></pre></div>
+</div>
+</div>
 </section>
 <section id="running-commands">
 <h2>Running Commands<a class="headerlink" href="#running-commands" title="Permalink to this heading">¶</a></h2>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="kn">from</span> <span class="nn">promptscript.executor</span> <span class="kn">import</span> <span class="n">CommandExecutor</span>
 </span><span data-line="2"><span class="linenos">2</span>
 </span><span data-line="3"><span class="linenos">3</span>
@@ -159,6 +174,51 @@ data-aria-dark="Switch to auto color mode">
 </span><span data-line="5"><span class="linenos">5</span><span class="n">command_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;show &quot;Hello, World!&quot;&#39;</span><span class="p">)</span>
 </span></pre></div>
 </div>
+</div>
+<p>The CommandExecutor also supports passing in parameters.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="n">command_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;show msg&#39;</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</section>
+<section id="getting-output-from-promptscript">
+<h2>Getting Output from PromptScript<a class="headerlink" href="#getting-output-from-promptscript" title="Permalink to this heading">¶</a></h2>
+<p>To make output from PromptScript files avaliable in Python, you can use the <code class="docutils literal notranslate"><span class="pre">yield</span></code> command. The first argument to <code class="docutils literal notranslate"><span class="pre">yield</span></code> is
+the key to make the value avaliable through, while the second argument is the value itself.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">yield</span></code> <strong>does not</strong> operate like return in Python. Code after a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement <strong>will be executed</strong>.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">file.prompt</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span>chat_response = <span class="nb">chat</span> user_prompt, <span class="s">&quot;gpt-4o&quot;</span>, <span class="s">&quot;API_KEY&quot;</span>
+</span><span data-line="2"><span class="hll"><span class="linenos">2</span><span class="nb">yield</span> <span class="s">&quot;chat_response&quot;</span>, chat_response
+</span></span></pre></div>
+</div>
+</div>
+<p>We can then access the value of chat_response:</p>
+<div class="demo docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">main.py</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="linenos">1</span><span class="kn">from</span> <span class="nn">promptscript.executor</span> <span class="kn">import</span> <span class="n">FileExecutor</span>
+</span><span data-line="2"><span class="linenos">2</span>
+</span><span data-line="3"><span class="linenos">3</span>
+</span><span data-line="4"><span class="linenos">4</span><span class="n">file_executor</span> <span class="o">=</span> <span class="n">FileExecutor</span><span class="p">()</span>
+</span><span data-line="5"><span class="linenos">5</span><span class="n">output</span> <span class="o">=</span> <span class="n">file_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;file.prompt&#39;</span><span class="p">,</span> <span class="n">user_prompt</span><span class="o">=</span><span class="s1">&#39;What is 2+2?&#39;</span><span class="p">)</span>
+</span><span data-line="6"><span class="linenos">6</span>
+</span><span data-line="7"><span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="demo-result highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="p">{</span><span class="s1">&#39;chat_response&#39;</span><span class="p">:</span> <span class="s1">&#39;2+2 equals 4.&#39;</span><span class="p">}</span>
+</span></pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">yield</span></code> also works the same way in the <code class="docutils literal notranslate"><span class="pre">CommandExecutor</span></code> and <code class="docutils literal notranslate"><span class="pre">PersistentCommandExecutor</span></code>.</p>
 </div>
 </section>
 </section>
