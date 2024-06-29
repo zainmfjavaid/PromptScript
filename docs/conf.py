@@ -11,7 +11,7 @@ from promptscript_lexer import PromptScriptLexer
 project = 'PromptScript'
 copyright = '2024, Zain Javaid'
 author = 'Zain Javaid'
-release = '0.1.2'
+release = '0.2.0'
 
 # -- General configuration ---------------------------------------------------
 
@@ -23,8 +23,6 @@ extensions = [
 sitemap_excludes = ['404/']
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
-
 
 # -- Options for HTML output -------------------------------------------------
 
