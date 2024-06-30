@@ -33,7 +33,13 @@ html_title = 'PromptScript Documentation'
 html_theme_options = {
     'accent_color': 'jade',
     'globaltoc_expand_depth': 1,
-    'github_url': 'https://github.com/zainmfjavaid/PromptScript'
+    'github_url': 'https://github.com/zainmfjavaid/PromptScript',
+    'nav_links': [
+        {
+            'title': 'About',
+            'url': 'about'
+        }
+    ]
 }
 
 def setup(app):

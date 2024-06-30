@@ -1,9 +1,5 @@
 :orphan:
-:layour: 404
+:layout: 404
 
 404
 ===
-
-The page you were looking for doesn't exist.
-
-`Return Home <index.html>`_

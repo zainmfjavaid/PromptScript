@@ -2,7 +2,7 @@
 <html lang="en" data-accent-color="jade" data-content_root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>404 - PromptScript Documentation</title><link rel="shortcut icon" href="_static/favicon.ico"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>404 - PromptScript Documentation</title><link rel="shortcut icon" href="_static/favicon.ico"/><link rel="author" title="About these documents" href="about.html" /><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=397bb51e" />
@@ -19,9 +19,17 @@
   --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
 }
 </style>
-    <meta property="og:type" content="website"/><meta property="og:title" content="404"/>
-<meta name="twitter:card" content="summary"/>
-  </head>
+    
+<style>
+  .not-found {
+    padding-top: calc(30vh - var(--sy-s-offset-top));
+    text-align: center;
+  }
+  .yue a.headerlink {
+    display: none;
+  }
+</style>
+</head>
 <body><div class="sy-head">
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
@@ -31,7 +39,7 @@
       <strong>PromptScript</strong>
     </a>
     <div class="sy-head-nav" id="HeadNav">
-      <nav class="sy-head-links"></nav>
+      <nav class="sy-head-links"><ul><li class="link"><a href="about.html">About</a></li></ul></nav>
       <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get">
   <input type="text" name="q" placeholder="Search" />
   <kbd>/</kbd>
@@ -55,87 +63,27 @@ data-aria-dark="Switch to auto color mode">
       </button>
     </div>
   </div>
-</div>
-<div class="sy-page sy-container flex mx-auto">
-  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
-    <div class="sy-lside-inner md:sticky">
-      <div class="sy-scrollbar p-6">
-        <div class="globaltoc" data-expand-depth="1"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1 _expand"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="basic/index.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="basic/show.html">Printing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/conditionals.html">Conditionals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/loops.html">Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/files.html">File I/O</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/load.html">Environment Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic/chaining.html">Chaining</a></li>
-</ul>
-</li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="ai/index.html">AI</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ai/chat.html">Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai/draw.html">Image Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ai/listen.html">Transcription</a></li>
-</ul>
-</li>
-<li class="toctree-l1 _expand"><a class="reference internal" href="running/index.html">Running PromptScript</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running/cli.html">CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running/python.html">Python</a></li>
-</ul>
-</li>
-</ul>
-        </div>
-      </div></div>
-  </aside>
-  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
-  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
-    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
-      <i class="i-lucide close"></i>
-    </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
-  </aside>
-  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
-  <main class="sy-main w-full max-sm:max-w-full print:pt-6"><div class="sy-breadcrumbs" role="navigation">
-  <div class="sy-breadcrumbs-inner flex items-center">
-    <div class="md:hidden mr-3">
-      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
-        <i class="i-lucide menu"></i>
-      </button>
-    </div>
-    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="index.html"><span itemprop="name">PromptScript</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="1" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">404</strong>
-        <meta itemprop="position" content="2" />
-      </li></ol>
-    <div class="xl:hidden ml-1">
-      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
-        aria-expanded="false">
-        <i class="i-lucide outdent"></i>
-      </button>
-    </div>
-  </div>
-</div><div class="flex flex-col break-words justify-between">
-      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-        <article class="yue" role="main">
-          <section id="id1">
+</div><div class="sy-container mx-auto body">
+    <main class="sy-content mx-auto pt-12 px-6 xl:px-12 break-words">
+      <article class="yue" role="main">
+        
+<div class="not-found">
+  <section id="id1">
 <h1>404<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h1>
-<p>The page you were looking for doesn’t exist.</p>
-<p><a class="reference external" href="index.html">Return Home</a></p>
 </section>
 
-        </article><button class="back-to-top" type="button">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-  </svg>
-  <span>Back to top</span>
-</button><div class="navigation flex print:hidden"></div></div>
-    </div>
-  </main>
+  <div class="not-found-back">
+    <a href="index.html">
+      <i class="i-lucide chevron-left"></i>
+      <span>Back to home</span>
+    </a>
+  </div>
 </div>
-<footer class="sy-foot">
+
+      </article>
+      
+    </main>
+  </div><footer class="sy-foot">
   <div class="sy-foot-inner sy-container mx-auto">
     <div class="sy-foot-reserved md:flex justify-between items-center">
       <div class="sy-foot-copyright"><p>2024, Zain Javaid</p>
