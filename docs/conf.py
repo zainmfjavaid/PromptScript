@@ -11,7 +11,7 @@ from promptscript_lexer import PromptScriptLexer
 project = 'PromptScript'
 copyright = '2024, Zain Javaid'
 author = 'Zain Javaid'
-release = '0.2.0'
+release = '0.3.0'
 
 # -- General configuration ---------------------------------------------------
 
