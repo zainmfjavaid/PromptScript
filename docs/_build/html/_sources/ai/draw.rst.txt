@@ -20,15 +20,15 @@ Syntax
 
     **prompt** (str: required): Prompt to generate image based on.
 
-    **model** (str: required): What image generation model to send the prompt to.
+    **model** (str: required): The model to use for image generation.
 
-    **api_key** (str: required): The API key for whatever service you're sending the chat to.
+    **api_key** (str: required): API key for the image generation service.
 
-    **destination_file** (str: required): File path to save generated image to
+    **destination_file** (str: required): File path to save generated image to.
 
 **Output**
     
-    **None** (output saved to destination_file)
+    **None** (output saved to destination_file).
 
 Supported Models
 ----------------

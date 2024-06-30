@@ -1,6 +1,12 @@
 
+# For PromptScript CLI
 COMMANDS = ['exit', 'save', 'show', 'chat', 'draw', 'listen', 'if', 'elif', 'else', 'for', 'while']
+
+# For CommandExecutor and PersistentCommandExecutor
 ILLEGAL_PARAMETER_NAMES = ['yield_output', 'get_environment_variable']
+
+# Chat Defaults
+DEFAULT_SYSTEM_PROMPT = 'you are a helpful chat assistant.'
 
 # Models
 ## Contains list of supported models from different AI providers
