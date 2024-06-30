@@ -94,6 +94,7 @@ data-aria-dark="Switch to auto color mode">
     </button>
     <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
 <li><a class="reference internal" href="#syntax">Syntax</a></li>
+<li><a class="reference internal" href="#keyword-arguments">Keyword Arguments</a></li>
 <li><a class="reference internal" href="#supported-models">Supported Models</a></li>
 </ul>
 </div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
@@ -147,6 +148,20 @@ data-aria-dark="Switch to auto color mode">
 <p><strong>Output</strong></p>
 <blockquote>
 <div><p><strong>str</strong>: Text response from the LLM.</p>
+</div></blockquote>
+</section>
+<section id="keyword-arguments">
+<h2>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this heading">¶</a></h2>
+<p>For more advanced LLM calls, you can pass in additional arguments. To use these, you must include
+the name of the parameter you’re setting.</p>
+<div class="highlight-promptscript notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">chat</span> <span class="nv">prompt</span>, <span class="nv">model</span>, <span class="nv">api_key</span>, max_tokens=<span class="m">100</span>, system_prompt=<span class="s">&quot;you are a pirate.&quot;</span>
+</span></pre></div>
+</div>
+<p><strong>Keyword Arguments</strong></p>
+<blockquote>
+<div><p><strong>max_tokens</strong> (int, optional): Max LLM response length in tokens. If not set, the default is 4096.</p>
+<p><strong>system_prompt</strong> (str, optional): Instructions to tell LLM how to respond to queries. If not set,
+the default system prompt is <code class="docutils literal notranslate"><span class="pre">you</span> <span class="pre">are</span> <span class="pre">a</span> <span class="pre">helpful</span> <span class="pre">chat</span> <span class="pre">assistant</span></code>.</p>
 </div></blockquote>
 </section>
 <section id="supported-models">

@@ -28,6 +28,24 @@ Syntax
 
     **str**: Text response from the LLM.
 
+
+Keyword Arguments
+------------------
+
+For more advanced LLM calls, you can pass in additional arguments. To use these, you must include 
+the name of the parameter you're setting.
+
+.. code-block:: promptscript
+
+    chat prompt, model, api_key, max_tokens=100, system_prompt="you are a pirate."
+
+**Keyword Arguments**
+
+    **max_tokens** (int, optional): Max LLM response length in tokens. If not set, the default is 4096.
+
+    **system_prompt** (str, optional): Instructions to tell LLM how to respond to queries. If not set,
+    the default system prompt is ``you are a helpful chat assistant``.
+
 Supported Models
 ----------------
 
