@@ -22,7 +22,9 @@ setup(
         'sphinx-tabs==3.4.5',
         'sphinx_design==0.5.0',
         'twine==5.1.1',
-        'anthropic==0.30.0'
+        'anthropic==0.30.0',
+        'sphinx-docsearch==0.0.7',
+        'python-dotenv==1.0.1'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',

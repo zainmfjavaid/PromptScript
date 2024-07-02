@@ -1,10 +1,13 @@
 import os
 import sys
+from dotenv import load_dotenv
 from sphinx.highlighting import lexers
 
 sys.path.insert(0, os.path.abspath('.'))
 
 from promptscript_lexer import PromptScriptLexer
+
+load_dotenv('config.env')
 
 # -- Project information -----------------------------------------------------
 
@@ -17,7 +20,8 @@ release = '0.3.0'
 
 extensions = [
     'sphinx_design',
-    'sphinx_tabs.tabs'
+    'sphinx_tabs.tabs',
+    'sphinx_docsearch'
 ]
 
 sitemap_excludes = ['404/']
@@ -41,6 +45,11 @@ html_theme_options = {
         }
     ]
 }
+
+if os.getenv('USE_DOCSEARCH'):
+    docsearch_app_id = os.environ['DOCSEARCH_APP_ID']
+    docsearch_api_key = os.environ['DOCSEARCH_API_KEY']
+    docsearch_index_name = os.environ['DOCSEARCH_INDEX_NAME']
 
 def setup(app):
     lexers['promptscript'] = PromptScriptLexer()
